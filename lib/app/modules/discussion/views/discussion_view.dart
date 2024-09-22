@@ -28,7 +28,7 @@ class DiscussionView extends GetView<DiscussionController> {
         elevation: 3,
         shadowColor: Colors.black,
         title: Text('Diskusi', style: mediumText24),
-        centerTitle: true,
+        centerTitle: false,
         actions: [
           Image.asset("assets/icons/ic_ranks.png", width: 30),
           const SizedBox(width: 8),
