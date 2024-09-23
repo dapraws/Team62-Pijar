@@ -1,6 +1,12 @@
 import 'package:get/get.dart';
 
 class ArticleController extends GetxController {
+  int selectedIndex = 0;
+
+  void onTileTapped(int index) {
+    selectedIndex = index;
+  }
+
   List<Map<String, String>> articles = [
     {
       "image": "assets/images/img_article_1.png",
