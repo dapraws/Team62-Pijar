@@ -13,6 +13,7 @@ class DashboardAView extends GetView<DashboardController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 3,
         shadowColor: Colors.black,

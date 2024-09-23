@@ -20,9 +20,9 @@ class DashboardController extends GetxController {
       Get.to(() => const DashboardView());
 
       Get.snackbar(
-        'Selamat Datang',
-        'Login berhasil!',
-        snackPosition: SnackPosition.TOP,
+        'Login berhasil',
+        'Selamat datang di Pijar!',
+        snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green.withOpacity(0.8),
         colorText: Colors.white,
         duration: const Duration(seconds: 3),

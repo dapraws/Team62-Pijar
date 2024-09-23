@@ -3,6 +3,9 @@ import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 import 'package:pijarmahir/app/data/fonts.dart';
+import 'package:pijarmahir/app/modules/article/views/article_view.dart';
+import 'package:pijarmahir/app/modules/dashboard/views/dashboard_a_view.dart';
+import 'package:pijarmahir/app/modules/discussion/views/discussion_view.dart';
 
 import '../controllers/dashboard_controller.dart';
 
@@ -162,21 +165,37 @@ class DashboardView extends GetView<DashboardController> {
               title: Text('Lowongan Kerja', style: regularText20),
               onTap: () {},
             ),
+            // Navigate to DiscussionView
             ListTile(
               leading:
                   Image.asset("assets/icons/ic_discussion.png", height: 25),
               title: Text('Diskusi', style: regularText20),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const DiscussionView());
+              },
             ),
             ListTile(
               leading: Image.asset("assets/icons/ic_articles.png", height: 25),
               title: Text('Artikel', style: regularText20),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const ArticleView());
+              },
             ),
             ListTile(
               leading: Image.asset("assets/icons/ic_help.png", height: 25),
               title: Text('Bantuan', style: regularText20),
               onTap: () {},
+            ),
+            const Divider(
+              color: Colors.grey,
+            ),
+            ListTile(
+              leading: Image.asset("assets/icons/ic_exit.png", height: 25),
+              title: Text('Keluar', style: regularText20),
+              onTap: () {
+                Get.to(() => const DashboardAView(),
+                    transition: Transition.rightToLeft);
+              },
             ),
           ],
         ),
@@ -590,50 +609,55 @@ class DashboardView extends GetView<DashboardController> {
                     itemCount: controller.articles.length,
                     itemBuilder: (BuildContext context, int index) {
                       // Example articles data (replace with your dynamic data from controller)
-                      return Card(
-                        color: Colors.white,
-                        elevation: 5,
-                        margin: const EdgeInsets.only(bottom: 16.0),
-                        child: SizedBox(
-                          height: 100,
-                          child: Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.horizontal(
-                                    left: Radius.circular(0)),
-                                child: Image.asset(
-                                  controller.articles[index]["image"]!,
-                                  width: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8.0),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        controller.articles[index]["title"]!,
-                                        style: regularText16,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        controller.articles[index]["date"]!,
-                                        style: regularText14.copyWith(
-                                            color: Colors.black54),
-                                      ),
-                                    ],
+                      return GestureDetector(
+                        onTap: () {
+                          Get.to(() => const ArticleView());
+                        },
+                        child: Card(
+                          color: Colors.white,
+                          elevation: 5,
+                          margin: const EdgeInsets.only(bottom: 16.0),
+                          child: SizedBox(
+                            height: 100,
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.horizontal(
+                                      left: Radius.circular(0)),
+                                  child: Image.asset(
+                                    controller.articles[index]["image"]!,
+                                    width: 100,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                              )
-                            ],
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 8.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          controller.articles[index]["title"]!,
+                                          style: regularText16,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        Text(
+                                          controller.articles[index]["date"]!,
+                                          style: regularText14.copyWith(
+                                              color: Colors.black54),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       );
