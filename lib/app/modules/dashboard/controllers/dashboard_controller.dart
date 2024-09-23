@@ -1,6 +1,35 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pijarmahir/app/modules/dashboard/views/dashboard_view.dart';
 
 class DashboardController extends GetxController {
+  var isLoading = false.obs;
+
+  int selectedIndex = 0;
+
+  void onTileTapped(int index) {
+    selectedIndex = index;
+  }
+
+  void onLoginTapped() {
+    isLoading.value = true;
+
+    Future.delayed(const Duration(seconds: 2), () {
+      isLoading.value = false;
+
+      Get.to(() => const DashboardView());
+
+      Get.snackbar(
+        'Selamat Datang',
+        'Login berhasil!',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.8),
+        colorText: Colors.white,
+        duration: const Duration(seconds: 3),
+      );
+    });
+  }
+
   final List<Map<String, String>> categories = [
     {
       "name": "Mahir Teknologi",

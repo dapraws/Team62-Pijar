@@ -11,6 +11,7 @@ class DashboardAView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 3,
@@ -21,14 +22,36 @@ class DashboardAView extends GetView<DashboardController> {
         ),
         centerTitle: false,
         actions: [
-          Container(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              decoration: BoxDecoration(
-                  color: const Color(0xFF3088C8),
-                  border: Border.all(color: const Color(0xFF3088C8)),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Text("Login",
-                  style: mediumText16.copyWith(color: Colors.white))),
+          // Login Tapped
+          InkWell(
+            splashColor: Colors.transparent,
+            onTap: () {
+              controller.onLoginTapped();
+            },
+            child: Obx(() {
+              return Center(
+                  child: controller.isLoading.value
+                      ? Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                color: Color(0xFF3088C8),
+                              )),
+                        )
+                      : Container(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFF3088C8),
+                              border:
+                                  Border.all(color: const Color(0xFF3088C8)),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Text("Login",
+                              style:
+                                  mediumText16.copyWith(color: Colors.white))));
+            }),
+          ),
           const SizedBox(width: 8),
           Container(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
@@ -149,13 +172,16 @@ class DashboardAView extends GetView<DashboardController> {
 
             // Review
             Container(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 50),
+              padding: const EdgeInsets.fromLTRB(0, 0, 16, 50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Dengarkan kisah inspiratif mereka",
-                    style: mediumText20,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      "Dengarkan kisah inspiratif mereka",
+                      style: mediumText20,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   SizedBox(
@@ -166,7 +192,7 @@ class DashboardAView extends GetView<DashboardController> {
                       itemBuilder: (BuildContext context, int index) {
                         return Card(
                           margin: const EdgeInsets.only(
-                              left: 8.0, right: 8.0, bottom: 20),
+                              left: 16.0, right: 0.0, bottom: 20),
                           color: Colors.white,
                           elevation: 5,
                           child: Container(

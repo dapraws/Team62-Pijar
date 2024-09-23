@@ -12,15 +12,172 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: Drawer(
+        backgroundColor: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-                decoration: BoxDecoration(color: Colors.blue),
-                child: Text('Pijar')),
-            ListTile(title: const Text('Item 1'), onTap: () {}),
-            ListTile(title: const Text('Item 2'), onTap: () {}),
+            DrawerHeader(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              decoration: const BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  // Main Header
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        "assets/images/img_pijar_logo.png",
+                        height: 40,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.chevron_left_rounded,
+                          color: Color(0xFF79797F),
+                          size: 40,
+                        ),
+                      )
+                    ],
+                  ),
+
+                  // Profile
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(0, 12, 0, 8),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              NetworkImage("https://picsum.photos/1000"),
+                        ),
+                        const SizedBox(width: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Kirana Marani",
+                              style: mediumText18,
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Container(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(15, 8, 15, 8),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFE8DEF8),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Text(
+                                    "EXPLORER",
+                                    style: mediumText16,
+                                  ),
+                                ),
+                                const SizedBox(width: 15),
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/icons/ic_ranks.png",
+                                      height: 25,
+                                    ),
+                                    Text(
+                                      " 10",
+                                      style: mediumText16.copyWith(
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: controller.selectedIndex == 0
+                  ? Image.asset("assets/icons/ic_beranda_on.png", height: 25)
+                  : Image.asset("assets/icons/ic_beranda.png", height: 25),
+              title: controller.selectedIndex == 0
+                  ? Text('Beranda',
+                      style: regularText20.copyWith(
+                          color: const Color(0xFF3088C8)))
+                  : Text('Beranda', style: regularText20),
+              onTap: () => controller.onTileTapped(0),
+              tileColor:
+                  controller.selectedIndex == 0 ? Colors.blue.shade100 : null,
+              selected: controller.selectedIndex == 0,
+              selectedTileColor: Colors.blue.shade100,
+            ),
+            Theme(
+              data:
+                  Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                leading: Image.asset("assets/icons/ic_menu.png", height: 25),
+                title: Text("Program", style: regularText20),
+                childrenPadding: const EdgeInsets.only(left: 20),
+                children: [
+                  ListTile(
+                    leading: Image.asset("assets/icons/ic_pijar_mahir.png",
+                        height: 25),
+                    title: Text('Pijar Mahir', style: regularText20),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Image.asset("assets/icons/ic_pijar_prakerja.png",
+                        height: 25),
+                    title: Text('Pijar Prakerja', style: regularText20),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Image.asset("assets/icons/ic_pijar_camp.png",
+                        height: 25),
+                    title: Text('Pijar Camp', style: regularText20),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Image.asset("assets/icons/ic_pijar_business.png",
+                        height: 25),
+                    title: Text('Pijar Business', style: regularText20),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Image.asset("assets/icons/ic_pijar_ukm.png",
+                        height: 25),
+                    title: Text('Pijar for UKM', style: regularText20),
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: Image.asset("assets/icons/ic_lowongan.png", height: 25),
+              title: Text('Lowongan Kerja', style: regularText20),
+              onTap: () {},
+            ),
+            ListTile(
+              leading:
+                  Image.asset("assets/icons/ic_discussion.png", height: 25),
+              title: Text('Diskusi', style: regularText20),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Image.asset("assets/icons/ic_articles.png", height: 25),
+              title: Text('Artikel', style: regularText20),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Image.asset("assets/icons/ic_help.png", height: 25),
+              title: Text('Bantuan', style: regularText20),
+              onTap: () {},
+            ),
           ],
         ),
       ),
@@ -417,7 +574,6 @@ class DashboardView extends GetView<DashboardController> {
             ),
 
             // Article
-            // Article Section with List
             Container(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 50),
               child: Column(
