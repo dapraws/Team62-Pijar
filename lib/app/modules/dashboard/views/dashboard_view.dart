@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 import 'package:pijarmahir/app/data/fonts.dart';
@@ -45,30 +46,7 @@ class DashboardView extends GetView<DashboardController> {
             Container(
               child: Image.asset("assets/images/img_pijar_ads.png"),
             ),
-
-            // About
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: Text(
-                      "Tentang Pijar",
-                      style: mediumText24.copyWith(fontSize: 27),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 2,
-                    child: Text(
-                      "Platform pembelajaran dan sertifikasi secara digital yang memberikan kemudahan akses bagi masyarakat dalam meningkatkan keahlian dan kompetensinya serta sesuai dengan kebutuhan Industri pada saat ini maupun mendatang. Masyarakat dapat melakukan pembelajaran dengan mudah baik secara online maupun offline melalui platform ini.",
-                      style: regularText14,
-                    ),
-                  )
-                ],
-              ),
-            ),
+            const SizedBox(height: 30),
 
             // Category Grid
             Padding(
@@ -102,42 +80,244 @@ class DashboardView extends GetView<DashboardController> {
               ),
             ),
 
-            // Ads Banner
+            // Recommendation
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Image.asset("assets/images/img_ads_banner.png"),
-            ),
-
-            // Partners
-            Container(
-              padding: const EdgeInsets.fromLTRB(16, 30, 16, 0),
+              padding: const EdgeInsets.fromLTRB(0, 0, 16, 50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Mitra Kerjasama",
-                    style: mediumText24,
-                  ),
-                  GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 16.0,
-                      mainAxisSpacing: 0.8,
-                      childAspectRatio: 1,
+                  Container(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      "Rekomendasi untukmu",
+                      style: mediumText24,
                     ),
-                    itemCount: controller.partners.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(controller.partners[index], width: 80),
-                        ],
-                      );
-                    },
+                  ),
+                  const SizedBox(height: 16),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minHeight: 35.0,
+                      maxHeight: 380.0,
+                    ),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.reviews.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          margin: const EdgeInsets.only(
+                              left: 16.0, right: 0.0, bottom: 20),
+                          color: Colors.white,
+                          elevation: 5,
+                          child: Container(
+                            width: 280,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(10)),
+                                  child: Image.asset(
+                                    controller.recommendation[index]["image"]!,
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(16),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Title
+                                      Text(
+                                        controller.recommendation[index]
+                                            ["title"]!,
+                                        style: mediumText18,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(height: 4),
+
+                                      // Detail
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                30, 8, 30, 8),
+                                            decoration: BoxDecoration(
+                                                color: const Color(0xFFABFF94),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Text(
+                                              "ONLINE",
+                                              style: regularText16.copyWith(
+                                                  color:
+                                                      const Color(0xFF28B53B)),
+                                            ),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                20, 8, 20, 8),
+                                            child: Text(
+                                              "Pijar Mahir",
+                                              style: regularText16.copyWith(
+                                                  color: Colors.black54),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(height: 4),
+
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          const Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Icon(Icons.star,
+                                                  color: Colors.yellow,
+                                                  size: 30),
+                                              Icon(Icons.star,
+                                                  color: Colors.yellow,
+                                                  size: 30),
+                                              Icon(Icons.star,
+                                                  color: Colors.yellow,
+                                                  size: 30),
+                                              Icon(Icons.star,
+                                                  color: Colors.yellow,
+                                                  size: 30),
+                                              Icon(Icons.star,
+                                                  color: Colors.yellow,
+                                                  size: 30)
+                                            ],
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "5.0",
+                                                style: regularText18,
+                                              ),
+                                              const SizedBox(width: 4),
+                                              Text(
+                                                "(2)",
+                                                style: regularText16.copyWith(
+                                                    color: Colors.grey),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(height: 8),
+
+                                      Text(
+                                        controller.recommendation[index]
+                                            ["price"]!,
+                                        style: semiBoldText22,
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Bundling
+            Container(
+              padding: const EdgeInsets.fromLTRB(0, 0, 16, 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      "Best Deals",
+                      style: mediumText22,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minHeight: 35.0,
+                      maxHeight: 265.0,
+                    ),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.reviews.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          margin: const EdgeInsets.only(
+                              left: 16.0, right: 0.0, bottom: 20),
+                          color: Colors.white,
+                          elevation: 5,
+                          child: Container(
+                            width: 350,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(10)),
+                                  child: Image.asset(
+                                    controller.bundling[index]["image"]!,
+                                  ),
+                                ),
+                                Container(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(12, 8, 12, 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Price
+                                      Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            8, 5, 8, 5),
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFFD6E7F4),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        child: Text(
+                                          controller.bundling[index]["price"]!,
+                                          style: regularText16.copyWith(
+                                              color: const Color(0xFF3088C8)),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+
+                                      Text(
+                                        controller.bundling[index]["title"]!,
+                                        style: regularText18,
+                                      ),
+
+                                      Text(
+                                        controller.bundling[index]["bundle"]!,
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -145,13 +325,16 @@ class DashboardView extends GetView<DashboardController> {
 
             // Review
             Container(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 50),
+              padding: const EdgeInsets.fromLTRB(0, 0, 16, 50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Dengarkan kisah inspiratif mereka",
-                    style: mediumText20,
+                  Container(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      "Dengarkan kisah inspiratif mereka",
+                      style: mediumText20,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   SizedBox(
@@ -162,7 +345,7 @@ class DashboardView extends GetView<DashboardController> {
                       itemBuilder: (BuildContext context, int index) {
                         return Card(
                           margin: const EdgeInsets.only(
-                              left: 8.0, right: 8.0, bottom: 20),
+                              left: 16.0, right: 8.0, bottom: 20),
                           color: Colors.white,
                           elevation: 5,
                           child: Container(
@@ -228,6 +411,77 @@ class DashboardView extends GetView<DashboardController> {
                         );
                       },
                     ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Article
+            // Article Section with List
+            Container(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Artikel Pijar",
+                    style: mediumText22,
+                  ),
+                  const SizedBox(height: 12),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: controller.articles.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      // Example articles data (replace with your dynamic data from controller)
+                      return Card(
+                        color: Colors.white,
+                        elevation: 5,
+                        margin: const EdgeInsets.only(bottom: 16.0),
+                        child: SizedBox(
+                          height: 100,
+                          child: Row(
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.horizontal(
+                                    left: Radius.circular(0)),
+                                child: Image.asset(
+                                  controller.articles[index]["image"]!,
+                                  width: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        controller.articles[index]["title"]!,
+                                        style: regularText16,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Text(
+                                        controller.articles[index]["date"]!,
+                                        style: regularText14.copyWith(
+                                            color: Colors.black54),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
