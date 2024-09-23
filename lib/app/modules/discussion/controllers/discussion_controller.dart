@@ -1,23 +1,46 @@
 import 'package:get/get.dart';
 
 class DiscussionController extends GetxController {
-  //TODO: Implement DiscussionController
+  int selectedIndex = 0;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void onTileTapped(int index) {
+    selectedIndex = index;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  final List<String> filter = [
+    "Terbaru",
+    "Aktif",
+    "Reward",
+    "Belum Terjawab",
+  ];
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  final List<Map<String, String>> discussion = [
+    {
+      "name": "Budi Siregar",
+      "occupation": "Kapal Laut",
+      "image": "https://picsum.photos/200",
+      "date": "1 hari lalu",
+      "question": "Bagaimana cara menemukan pekerjaan terbaik untuk saya?",
+      "detail":
+          "Selama hidup saya, cita cita saya terus berubah. Saat saya masih anak-anak, saya ingin menjadi polisi, dokter, tentara. Saat remaja ingin menjadi youtuber. Lalu saat ini saya berkuliah di bidang IT, tetapi saya masih belum yakin dengan tujuan saya, saya ingin menjadi apa? Mohon bantuannya teman teman Pijar.",
+    },
+    {
+      "name": "Budi Siregar",
+      "occupation": "Kapal Laut",
+      "image": "https://picsum.photos/200",
+      "date": "1 hari lalu",
+      "question": "Bagaimana cara menemukan pekerjaan terbaik untuk saya?",
+      "detail":
+          "Selama hidup saya, cita cita saya terus berubah. Saat saya masih anak-anak, saya ingin menjadi polisi, dokter, tentara. Saat remaja ingin menjadi youtuber. Lalu saat ini saya berkuliah di bidang IT, tetapi saya masih belum yakin dengan tujuan saya, saya ingin menjadi apa? Mohon bantuannya teman teman Pijar.",
+    },
+    {
+      "name": "Budi Siregar",
+      "occupation": "Kapal Laut",
+      "image": "https://picsum.photos/200",
+      "date": "1 hari lalu",
+      "question": "Bagaimana cara menemukan pekerjaan terbaik untuk saya?",
+      "detail":
+          "Selama hidup saya, cita cita saya terus berubah. Saat saya masih anak-anak, saya ingin menjadi polisi, dokter, tentara. Saat remaja ingin menjadi youtuber. Lalu saat ini saya berkuliah di bidang IT, tetapi saya masih belum yakin dengan tujuan saya, saya ingin menjadi apa? Mohon bantuannya teman teman Pijar.",
+    },
+  ];
 }
