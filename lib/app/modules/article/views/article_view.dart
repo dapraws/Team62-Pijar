@@ -338,7 +338,7 @@ class ArticleView extends GetView<ArticleController> {
                         const CircleAvatar(
                           radius: 30,
                           backgroundImage:
-                              NetworkImage("https://picsum.photos/300"),
+                              NetworkImage("https://picsum.photos/1000"),
                         ),
                         Expanded(
                           child: Container(
@@ -376,7 +376,7 @@ class ArticleView extends GetView<ArticleController> {
                               const CircleAvatar(
                                 radius: 20,
                                 backgroundImage:
-                                    NetworkImage("https://picsum.photos/1000"),
+                                    NetworkImage("https://picsum.photos/300"),
                               ),
                               Text(
                                 " Jajang",
