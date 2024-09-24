@@ -150,4 +150,27 @@ class DashboardController extends GetxController {
       "date": "10 Sept 2023"
     },
   ];
+
+  List<Map<String, String>> materi = [
+    {
+      "header": "Pengantar AI dalam Bisnis",
+      "collapsed": "• Definisi dan konsep dasar AI ...",
+      "expanded":
+          "• Definisi dan konsep dasar AI\n• Perkembangan AI dan dampaknya terhadap dunia bisnis\n• Mengapa bisnis beralih ke AI?"
+    },
+    {
+      "header": "Sektor yang Terlibat dalam AI",
+      "collapsed":
+          "• Retail: Personalisasi pengalaman pelanggan dengan rekomendasi produk ...",
+      "expanded":
+          "• Retail: Personalisasi pengalaman pelanggan dengan rekomendasi produk\n• Keuangan: Deteksi penipuan dan otomatisasi proses keuangan\n• Kesehatan: Diagnosa penyakit melalui AI dan pemantauan kesehatan pasien\n• Manufaktur: Otomatisasi produksi dan pemeliharaan prediktif"
+    },
+    {
+      "header": "Teknologi AI dalam Bisnis",
+      "collapsed":
+          "• Machine Learning: Algoritma yang mempelajari data untuk membuat prediksi atau rekomendasi ...",
+      "expanded":
+          "• Machine Learning: Algoritma yang mempelajari data untuk membuat prediksi atau rekomendasi\n• Natural Language Processing (NLP): Pengolahan bahasa manusia untuk chatbot dan asisten virtual\n• Computer Vision: Analisis gambar dan video untuk pemantauan keamanan dan kualitas produk"
+    },
+  ];
 }

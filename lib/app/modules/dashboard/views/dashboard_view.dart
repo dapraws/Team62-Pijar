@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:pijarmahir/app/data/fonts.dart';
 import 'package:pijarmahir/app/modules/article/views/article_view.dart';
 import 'package:pijarmahir/app/modules/dashboard/views/dashboard_a_view.dart';
+import 'package:pijarmahir/app/modules/dashboard/views/detail_course_view.dart';
 import 'package:pijarmahir/app/modules/discussion/views/discussion_view.dart';
 
 import '../controllers/dashboard_controller.dart';
@@ -280,127 +281,137 @@ class DashboardView extends GetView<DashboardController> {
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.reviews.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return Card(
-                          margin: const EdgeInsets.only(
-                              left: 16.0, right: 0.0, bottom: 20),
-                          color: Colors.white,
-                          elevation: 5,
-                          child: Container(
-                            width: 280,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(10)),
-                                  child: Image.asset(
-                                    controller.recommendation[index]["image"]!,
+                        return GestureDetector(
+                          onTap: () {
+                            Get.to(() => const DetailCourseView());
+                          },
+                          child: Card(
+                            margin: const EdgeInsets.only(
+                                left: 16.0, right: 0.0, bottom: 20),
+                            color: Colors.white,
+                            elevation: 5,
+                            child: Container(
+                              width: 280,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(
+                                        top: Radius.circular(10)),
+                                    child: Image.asset(
+                                      controller.recommendation[index]
+                                          ["image"]!,
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(16),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      // Title
-                                      Text(
-                                        controller.recommendation[index]
-                                            ["title"]!,
-                                        style: mediumText18,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      const SizedBox(height: 4),
+                                  Container(
+                                    padding: const EdgeInsets.all(16),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        // Title
+                                        Text(
+                                          controller.recommendation[index]
+                                              ["title"]!,
+                                          style: mediumText18,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        const SizedBox(height: 4),
 
-                                      // Detail
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                30, 8, 30, 8),
-                                            decoration: BoxDecoration(
-                                                color: const Color(0xFFABFF94),
-                                                borderRadius:
-                                                    BorderRadius.circular(20)),
-                                            child: Text(
-                                              "ONLINE",
-                                              style: regularText16.copyWith(
+                                        // Detail
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      30, 8, 30, 8),
+                                              decoration: BoxDecoration(
                                                   color:
-                                                      const Color(0xFF28B53B)),
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                20, 8, 20, 8),
-                                            child: Text(
-                                              "Pijar Mahir",
-                                              style: regularText16.copyWith(
-                                                  color: Colors.black54),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(height: 4),
-
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          const Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Icon(Icons.star,
-                                                  color: Colors.yellow,
-                                                  size: 30),
-                                              Icon(Icons.star,
-                                                  color: Colors.yellow,
-                                                  size: 30),
-                                              Icon(Icons.star,
-                                                  color: Colors.yellow,
-                                                  size: 30),
-                                              Icon(Icons.star,
-                                                  color: Colors.yellow,
-                                                  size: 30),
-                                              Icon(Icons.star,
-                                                  color: Colors.yellow,
-                                                  size: 30)
-                                            ],
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "5.0",
-                                                style: regularText18,
-                                              ),
-                                              const SizedBox(width: 4),
-                                              Text(
-                                                "(2)",
+                                                      const Color(0xFFABFF94),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              child: Text(
+                                                "ONLINE",
                                                 style: regularText16.copyWith(
-                                                    color: Colors.grey),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(height: 8),
+                                                    color: const Color(
+                                                        0xFF28B53B)),
+                                              ),
+                                            ),
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      20, 8, 20, 8),
+                                              child: Text(
+                                                "Pijar Mahir",
+                                                style: regularText16.copyWith(
+                                                    color: Colors.black54),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        const SizedBox(height: 4),
 
-                                      Text(
-                                        controller.recommendation[index]
-                                            ["price"]!,
-                                        style: semiBoldText22,
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            const Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(Icons.star,
+                                                    color: Colors.yellow,
+                                                    size: 30),
+                                                Icon(Icons.star,
+                                                    color: Colors.yellow,
+                                                    size: 30),
+                                                Icon(Icons.star,
+                                                    color: Colors.yellow,
+                                                    size: 30),
+                                                Icon(Icons.star,
+                                                    color: Colors.yellow,
+                                                    size: 30),
+                                                Icon(Icons.star,
+                                                    color: Colors.yellow,
+                                                    size: 30)
+                                              ],
+                                            ),
+                                            const SizedBox(width: 8),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "5.0",
+                                                  style: regularText18,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Text(
+                                                  "(2)",
+                                                  style: regularText16.copyWith(
+                                                      color: Colors.grey),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        const SizedBox(height: 8),
+
+                                        Text(
+                                          controller.recommendation[index]
+                                              ["price"]!,
+                                          style: semiBoldText22,
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         );
