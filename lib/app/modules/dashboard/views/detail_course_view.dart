@@ -2,7 +2,6 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:pijarmahir/app/data/fonts.dart';
 
@@ -569,7 +568,7 @@ class DetailCourseView extends GetView<DashboardController> {
               const Divider(height: 50),
 
               Container(
-                padding: const EdgeInsets.fromLTRB(0, 0, 16, 50),
+                padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -734,6 +733,43 @@ class DetailCourseView extends GetView<DashboardController> {
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.fromLTRB(16, 10, 16, 30),
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(color: Color(0xFFF2F2F5)),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Rp 75.000",
+              style: mediumText18,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              decoration: BoxDecoration(
+                  border: Border.all(color: const Color(0xFF3088C8)),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Image.asset(
+                "assets/icons/ic_shopping_cart.png",
+                height: 30,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+              decoration: BoxDecoration(
+                  color: const Color(0xFF3088C8),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Text(
+                "Beli Sekarang",
+                style: mediumText18.copyWith(color: Colors.white),
+              ),
+            ),
+          ],
         ),
       ),
     );
