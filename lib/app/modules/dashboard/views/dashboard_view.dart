@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pijarmahir/app/data/fonts.dart';
 import 'package:pijarmahir/app/modules/article/views/article_view.dart';
+import 'package:pijarmahir/app/modules/chatbot/views/chatbot_view.dart';
 import 'package:pijarmahir/app/modules/dashboard/views/dashboard_a_view.dart';
 import 'package:pijarmahir/app/modules/dashboard/views/detail_course_view.dart';
 import 'package:pijarmahir/app/modules/discussion/views/discussion_view.dart';
@@ -678,6 +679,22 @@ class DashboardView extends GetView<DashboardController> {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: SizedBox(
+        height: 65.0,
+        width: 65.0,
+        child: FittedBox(
+          child: FloatingActionButton(
+            onPressed: () {
+              Get.to(() => const ChatbotView());
+            },
+            backgroundColor: const Color(0xFF3088C8),
+            child: Image.asset(
+              "assets/icons/ic_chatbot.png",
+              width: 30,
+            ),
+          ),
         ),
       ),
     );
